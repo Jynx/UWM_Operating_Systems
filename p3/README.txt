@@ -1,0 +1,7 @@
+Four our C project this time around, we were required to implement 3 different sets of alloc and free functions that were specific to certain constraints such as memory size, header size, and more. For workload 1, the tightest restrictions in workloads, we basically had to maintain a very small sized header to track free and occupied memory. I devised a system that uses bitflags to determine free memory, and consumed memory, and used shifting in order to make comparisons for finding memory to free etc. I used a very similar approach for workload 2, where the header restrictions were a little bit more lax. For workload 3, I used a standard linked list approach with a struct acting as a header. It contained details as to the next field, as well as the size of the memory block.
+
+XV6-Implementation Details:
+
+For this assignment, we were required to modify the current memory management system built into xv6. The standard implementation places heap memory and stack memory right next to one another, greatly limiting the size of the heap. We were required to move the stack to the high end of address space, and change the direction that it grows. We also had to account for handling page faults by growing the stack, and making sure that the stack and heap, now growing towards one another, did not overlap. Thus we had to create a buffer page that existed between the two. 
+
+We also had to properly handle copying processes, or copying stack information now that our stack was relocated. 
